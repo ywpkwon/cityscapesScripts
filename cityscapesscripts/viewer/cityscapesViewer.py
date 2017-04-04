@@ -996,23 +996,23 @@ class CityscapesViewer(QtGui.QMainWindow):
 
         if items:
 
-		    # Create and wait for dialog
-		    (item, ok) = QtGui.QInputDialog.getItem(self, dlgTitle, question, items, 0, False)
+            # Create and wait for dialog
+            (item, ok) = QtGui.QInputDialog.getItem(self, dlgTitle, question, items, 0, False)
 
-		    # Restore message
-		    self.statusBar().showMessage( restoreMessage )
+            # Restore message
+            self.statusBar().showMessage( restoreMessage )
 
-		    if ok and item:
-		        (split,gt,city) = [ str(i) for i in item.split(', ') ]
-		        if split == 'test' and not self.showDisparity:
-		            self.transp = 0.1
-		        else:
-		            self.transp = 0.5
-		        self.city      = os.path.normpath( os.path.join( csPath, "leftImg8bit" , split , city ) )
-		        self.labelPath = os.path.normpath( os.path.join( csPath, gt            , split , city ) )
-		        self.dispPath  = os.path.normpath( os.path.join( csPath, "disparity"   , split , city ) )
-		        self.loadCity()
-		        self.imageChanged()
+            if ok and item:
+                (split,gt,city) = [ str(i) for i in item.split(', ') ]
+                if split == 'test' and not self.showDisparity:
+                    self.transp = 0.1
+                else:
+                    self.transp = 0.5
+                self.city      = os.path.normpath( os.path.join( csPath, "leftImg8bit" , split , city ) )
+                self.labelPath = os.path.normpath( os.path.join( csPath, gt            , split , city ) )
+                self.dispPath  = os.path.normpath( os.path.join( csPath, "disparity"   , split , city ) )
+                self.loadCity()
+                self.imageChanged()
 
         else:
  
